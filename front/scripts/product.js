@@ -12,6 +12,7 @@ fetch(`http://localhost:3000/api/products/${pageId}`)
 
   //affichage du produit
   .then(function (data) {
+    console.table(data);
     displayProduct(data);
   });
 
