@@ -4,7 +4,9 @@ export function setCart(cart) {
 
 export function addToCart(product) {
   var cart = getCart();
+
   cart.push(product);
+
   setCart(cart);
 }
 
