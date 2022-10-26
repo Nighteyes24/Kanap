@@ -71,7 +71,7 @@ async function displayCart() {
     //VARIABLES POUR CHANGER LE TYPE EN NOMBRE
 
     let quantityNumber = +product.quantite;
-    let priceNumber = product.prix * +product.quantite;
+    let priceNumber = product.price * +product.quantite;
 
     //PUSH DES NOMBRES DANS LES VARIABLES TABLEAUX
 
@@ -85,7 +85,7 @@ async function displayCart() {
   positionEmptyCart.innerHTML = cartArray;
 }
 
-// si on ajoute un produit
+// si on modifie la quantité d'un produit
 function changeQuantity() {
   const quantityInput = document.querySelectorAll(".itemQuantity");
   quantityInput.forEach((quantityInput) => {
@@ -110,10 +110,11 @@ function changeQuantity() {
     });
   });
 }
+changeQuantity();
 
 //si ou quand on supprime un items:
 function deleteItem() {
-  const deleteButtons = document.querySelectorAll(".deleteItem");
+  const deleteButtons = document.querySelectorAll("deleteItem");
   deleteButtons.forEach((deleteButton) => {
     deleteButton.addEventListener("click", (event) => {
       event.preventDefault();
@@ -132,3 +133,6 @@ function deleteItem() {
     });
   });
 }
+deleteItem();
+
+sessionStorage.clear();
