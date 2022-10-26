@@ -35,10 +35,10 @@ main();
 const bouton = document.querySelector("#addToCart");
 if (bouton != null) {
   bouton.addEventListener("click", () => {
-    const colors = document.querySelector("#colors").value;
+    const color = document.querySelector("#colors").value;
     const quantite = document.querySelector("#quantity").value;
 
-    if (colors === "" || quantite < 1 || quantite > 100) {
+    if (color === "" || quantite < 1 || quantite > 100) {
       return alert(
         "Une erreur s'est produite, veuillez vérifier les informations"
       );
@@ -46,7 +46,7 @@ if (bouton != null) {
 
     const id = getId();
     const product = {
-      colors,
+      color,
       quantite,
       id,
     };
@@ -54,7 +54,7 @@ if (bouton != null) {
     addToCart(product);
 
     //redirection vers le pannier
-    window.Location.href = "../cart.html";
+    window.location.href = "./cart.html";
   });
 }
 
