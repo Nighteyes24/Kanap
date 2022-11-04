@@ -37,6 +37,10 @@ async function displayCart() {
   let totalQuantity = 0;
   let totalPrice = 0;
 
+  for (let cart = 0; cart < getProductById.length; cart++) {
+    const element = getProductById[cart];
+  }
+
   const positionEmptyCart = document.getElementById("cart__items");
 
   for (let item of cart) {
@@ -83,6 +87,16 @@ async function displayCart() {
   document.querySelector("#totalPrice").innerHTML = totalPrice;
 
   positionEmptyCart.innerHTML = cartArray;
+
+  changeQuantity();
+  deleteItem();
+}
+
+function dryItems(items) {
+  return items.map(dryItem);
+}
+function dryItem([_id, color, quantity]) {
+  return { _id, color, quantity };
 }
 
 // si on modifie la quantité d'un produit
@@ -110,11 +124,10 @@ function changeQuantity() {
     });
   });
 }
-changeQuantity();
 
 //si ou quand on supprime un items:
 function deleteItem() {
-  const deleteButtons = document.querySelectorAll("deleteItem");
+  const deleteButtons = document.querySelectorAll(".deleteItem");
   deleteButtons.forEach((deleteButton) => {
     deleteButton.addEventListener("click", (event) => {
       event.preventDefault();
@@ -127,12 +140,8 @@ function deleteItem() {
       console.log(cart);
       // Mise à jour du localStorage
       setCart(cart);
-      // Refresh de la page Panier
-      location.reload();
+
       alert("Vous avez supprimé un élément du panier.");
     });
   });
 }
-deleteItem();
-
-sessionStorage.clear();
