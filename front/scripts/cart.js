@@ -118,9 +118,9 @@ function changeQuantity() {
       });
 
       // Mise à jour du localStorage
-      setCart(items);
+      setCart(items); // utiliser drycart pour netoyer les info suplémentaire du cart
+      recalcTotal(); // recalculer le total
       // mise à jour de la page Panier
-      location.reload();
     });
   });
 }
@@ -140,7 +140,9 @@ function deleteItem() {
       console.log(cart);
       // Mise à jour du localStorage
       setCart(cart);
-
+      // refresh de la page Panier
+      article.remove();
+      recalcTotal();
       alert("Vous avez supprimé un élément du panier.");
     });
   });
